@@ -6,7 +6,9 @@ import kotlinddd.domain.order.payment.CreditCard
 import kotlinddd.infrastructure.queries.OrdersQuery
 import kotlinddd.infrastructure.queries.dtos.OrderDTO
 import kotlinddd.infrastructure.queries.dtos.OrderPerUsersDTO
-import kotlinddd.web.models.*
+import kotlinddd.web.models.AddProductRequest
+import kotlinddd.web.models.ChangeProductQuantityRequest
+import kotlinddd.web.models.CreateOrderRequest
 import kotlinddd.web.models.PayOrderRequest
 import org.axonframework.commandhandling.gateway.CommandGateway
 import org.springframework.http.HttpStatus
@@ -18,7 +20,7 @@ import java.util.*
 class OrderController(val commandGateway: CommandGateway) {
     // Commands
     @PostMapping("/orders")
-    fun createOrder(@RequestBody request: CreateOrderRequest) : ResponseEntity<UUID> {
+    fun createOrder(@RequestBody request: CreateOrderRequest): ResponseEntity<UUID> {
         val command = CreateOrderCommand(UUID.fromString(request.customerId))
         val orderId = commandGateway.send<UUID>(command).get()
 
@@ -29,8 +31,8 @@ class OrderController(val commandGateway: CommandGateway) {
     @ResponseStatus(HttpStatus.OK)
     fun addProduct(@PathVariable("orderId") orderId: String, @RequestBody request: AddProductRequest) {
         val command = AddProductCommand(UUID.fromString(orderId),
-                                        UUID.fromString(request.productId),
-                                        request.quantity)
+                UUID.fromString(request.productId),
+                request.quantity)
 
         commandGateway.sendAndWait<UUID>(command)
     }
@@ -42,8 +44,8 @@ class OrderController(val commandGateway: CommandGateway) {
                               @RequestBody request: ChangeProductQuantityRequest) {
 
         val command = ChangeProductQuantityCommand(UUID.fromString(orderId),
-                                                   UUID.fromString(productId),
-                                                   request.quantity)
+                UUID.fromString(productId),
+                request.quantity)
 
         commandGateway.sendAndWait<UUID>(command)
     }
@@ -63,7 +65,8 @@ class OrderController(val commandGateway: CommandGateway) {
     fun payOrder(@PathVariable("orderId") orderId: String,
                  @RequestBody request: PayOrderRequest) {
 
-        val card = CreditCard(request.cardName, request.cardNumber, request.expirationDate ?: Date(), request.verificationCode)
+        val card = CreditCard(request.cardName, request.cardNumber, request.expirationDate
+                ?: Date(), request.verificationCode)
         val command = PayOrderCommand(UUID.fromString(orderId), card)
 
         commandGateway.sendAndWait<UUID>(command)
@@ -76,24 +79,24 @@ class OrderController(val commandGateway: CommandGateway) {
     }
 
     @GetMapping("/orders", params = ["orders_per_users"])
-    fun findOrderPerUsers() : List<OrderPerUsersDTO>{
+    fun findOrderPerUsers(): List<OrderPerUsersDTO> {
         return OrdersQuery.findOrderPerUsers()
     }
 
     @GetMapping("/orders", params = ["last_orders"])
-    fun findLastOrders() : List<Any> {
+    fun findLastOrders(): List<Any> {
         return OrdersQuery.findLastOrders()
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(BusinessException::class)
-    fun handleException() {
-
+    fun handleBusinessException() {
+        return
     }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Exception::class)
-    fun handleException() {
-        return 
+    fun handleGenerallException() {
+        return
     }
 }
