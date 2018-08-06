@@ -1,12 +1,12 @@
-package kotlinddd.application.order.commandhandlers
+package order.commandhandlers
 
-import kotlinddd.application.order.commandhandlers.commands.*
 import kotlinddd.domain.order.Order
 import kotlinddd.domain.order.OrderRepository
-import org.axonframework.commandhandling.CommandHandler
 import kotlinddd.domain.order.payment.PaymentService
+import order.commandhandlers.commands.*
+import org.axonframework.commandhandling.CommandHandler
 import org.axonframework.eventhandling.EventBus
-import java.util.UUID
+import java.util.*
 
 open class OrderCommandHandlers(private val repository: OrderRepository,
                                 private val paymentService: PaymentService,

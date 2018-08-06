@@ -1,6 +1,6 @@
-package kotlinddd.web.configuration.injection
+package configuration.injection
 
-import kotlinddd.application.order.commandhandlers.OrderCommandHandlers
+import order.commandhandlers.OrderCommandHandlers
 import kotlinddd.domain.order.OrderRepository
 import kotlinddd.domain.order.payment.PaymentService
 import org.axonframework.eventhandling.EventBus

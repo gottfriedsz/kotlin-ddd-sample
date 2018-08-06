@@ -1,4 +1,4 @@
-package kotlinddd.web.models
+package models
 
 import java.util.*
 

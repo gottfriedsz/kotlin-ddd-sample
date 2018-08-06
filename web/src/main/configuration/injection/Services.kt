@@ -1,4 +1,4 @@
-package kotlinddd.web.configuration.injection
+package configuration.injection
 
 import kotlinddd.domain.shipping.ShippingService
 import kotlinddd.infrastructure.services.EmailNotificationService

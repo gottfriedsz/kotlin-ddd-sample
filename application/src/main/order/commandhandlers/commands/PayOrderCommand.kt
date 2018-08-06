@@ -1,4 +1,4 @@
-package kotlinddd.application.order.commandhandlers.commands
+package order.commandhandlers.commands
 
 import kotlinddd.domain.order.payment.CreditCard
 import java.util.UUID

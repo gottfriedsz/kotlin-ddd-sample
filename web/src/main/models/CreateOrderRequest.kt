@@ -1,3 +1,3 @@
-package kotlinddd.web.models
+package models
 
 data class CreateOrderRequest(var customerId: String = "")

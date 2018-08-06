@@ -1,4 +1,4 @@
-package kotlinddd.infrastructure.queries.dtos
+package queries.dtos
 
 import java.util.*
 

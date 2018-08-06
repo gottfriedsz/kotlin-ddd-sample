@@ -1,6 +1,6 @@
 package kotlinddd.web.configuration.injection
 
-import kotlinddd.application.shipping.eventhandlers.ShipOrderAndNotifyUser
+import shipping.eventhandlers.ShipOrderAndNotifyUser
 import kotlinddd.domain.order.OrderRepository
 import kotlinddd.domain.shipping.ShippingService
 import org.springframework.beans.factory.annotation.Autowired

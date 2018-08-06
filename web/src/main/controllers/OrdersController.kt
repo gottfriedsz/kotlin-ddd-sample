@@ -1,15 +1,12 @@
-package kotlinddd.web.controllers
+package controllers
 
-import kotlinddd.application.order.commandhandlers.commands.*
 import kotlinddd.domain.BusinessException
 import kotlinddd.domain.order.payment.CreditCard
-import kotlinddd.infrastructure.queries.OrdersQuery
-import kotlinddd.infrastructure.queries.dtos.OrderDTO
-import kotlinddd.infrastructure.queries.dtos.OrderPerUsersDTO
-import kotlinddd.web.models.AddProductRequest
-import kotlinddd.web.models.ChangeProductQuantityRequest
-import kotlinddd.web.models.CreateOrderRequest
-import kotlinddd.web.models.PayOrderRequest
+import models.AddProductRequest
+import models.ChangeProductQuantityRequest
+import models.CreateOrderRequest
+import models.PayOrderRequest
+import order.commandhandlers.commands.*
 import org.axonframework.commandhandling.gateway.CommandGateway
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

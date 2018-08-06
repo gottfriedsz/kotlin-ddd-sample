@@ -1,8 +1,8 @@
-package kotlinddd.infrastructure.queries
+package queries
 
-import kotlinddd.infrastructure.queries.dtos.ItemDTO
-import kotlinddd.infrastructure.queries.dtos.OrderDTO
-import kotlinddd.infrastructure.queries.dtos.OrderPerUsersDTO
+import queries.dtos.ItemDTO
+import queries.dtos.OrderDTO
+import queries.dtos.OrderPerUsersDTO
 import java.util.*
 
 class OrdersQuery {

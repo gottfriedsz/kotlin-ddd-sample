@@ -1,4 +1,4 @@
-package kotlinddd.web.configuration.injection
+package configuration.injection
 
 import kotlinddd.domain.order.OrderRepository
 import kotlinddd.infrastructure.repositories.OrderRepositoryImpl

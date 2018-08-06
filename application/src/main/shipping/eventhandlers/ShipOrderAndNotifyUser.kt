@@ -1,4 +1,4 @@
-package kotlinddd.application.shipping.eventhandlers
+package shipping.eventhandlers
 
 import kotlinddd.domain.order.OrderPaid
 import kotlinddd.domain.order.OrderRepository
