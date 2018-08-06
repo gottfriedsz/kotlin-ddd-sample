@@ -27,3 +27,4 @@ build/
 *.iml
 !**/testData/**/*.iml
 .idea/
+**/*.ipr
