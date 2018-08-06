@@ -8,7 +8,7 @@ import org.axonframework.commandhandling.CommandHandler
 import org.axonframework.eventhandling.EventBus
 import java.util.*
 
-open class OrderCommandHandlers(private val repository: OrderRepository,
+class OrderCommandHandlers(private val repository: OrderRepository,
                                 private val paymentService: PaymentService,
                                 private val eventBus: EventBus) {
     @CommandHandler

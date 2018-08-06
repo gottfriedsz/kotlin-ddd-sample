@@ -5,7 +5,7 @@ import kotlinddd.domain.order.OrderRepository
 import kotlinddd.domain.shipping.ShippingService
 import org.axonframework.eventhandling.EventHandler
 
-open class ShipOrderAndNotifyUser(private val orderRepository: OrderRepository,
+class ShipOrderAndNotifyUser(private val orderRepository: OrderRepository,
                                   private val shippingService: ShippingService) {
     @EventHandler
     fun handle(event: OrderPaid) {
