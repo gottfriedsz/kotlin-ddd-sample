@@ -72,22 +72,6 @@ class OrderController(val commandGateway: CommandGateway) {
         commandGateway.sendAndWait<UUID>(command)
     }
 
-    // Queries
-    @GetMapping("/orders/{orderId}")
-    fun findOrderById(@PathVariable("orderId") orderId: String): OrderDTO {
-        return OrdersQuery.findOrderById(UUID.fromString(orderId))
-    }
-
-    @GetMapping("/orders", params = ["orders_per_users"])
-    fun findOrderPerUsers(): List<OrderPerUsersDTO> {
-        return OrdersQuery.findOrderPerUsers()
-    }
-
-    @GetMapping("/orders", params = ["last_orders"])
-    fun findLastOrders(): List<Any> {
-        return OrdersQuery.findLastOrders()
-    }
-
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(BusinessException::class)
     fun handleBusinessException() {
