@@ -1,10 +1,9 @@
 package kotlinddd.web.models
 
-import java.util.Date
+import java.util.*
 
-class PayOrderRequest {
-    var cardName: String = ""
-    var cardNumber: String = ""
-    var expirationDate: Date? = null
-    var verificationCode: String = ""
-}
+data class PayOrderRequest(
+        var cardName: String = "",
+        var cardNumber: String = "",
+        var expirationDate: Date? = null,
+        var verificationCode: String = "")

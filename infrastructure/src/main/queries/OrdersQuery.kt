@@ -23,7 +23,7 @@ class OrdersQuery {
             // Example returning a list of anonymous classes (to avoid the creation of a DTO class)
             return listOf(object {
                 val id = UUID.randomUUID()
-                val customer = "jhon"
+                val customer = "john"
             })
         }
     }

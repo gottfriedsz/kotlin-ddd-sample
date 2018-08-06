@@ -31,7 +31,6 @@ dependencies {
     implementation "org.axonframework:axon-spring-boot-autoconfigure:$axonVersion"
     implementation "org.springframework.amqp:spring-rabbit:$spring_boot_version"
     implementation "org.axonframework:axon-amqp:$axonVersion"
-    implementation "org.projectlombok:lombok:1.18.0"
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.jetbrains.kotlin:kotlin-test-junit:1.0.6'
